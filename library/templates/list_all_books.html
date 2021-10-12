@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<main>
+{% for book in books %}
+<div class="w3-row w3-padding-32 w3-center w3-margin" id="News" >
+<!-- part1 -->
+
+  <div class="w3-col  w3-container" style="width:38.2%">
+
+  <img src="{{book.image_url}}" alt="read-book" style="width:50%;height:50%;">
+  </div>
+<!-- part2 -->
+  <div class="w3-col  w3-container " style="width:61.8%">
+        <h2>{{book.title}}</h2>
+      <p>{{book.description}}</p>
+  </div>
+
+</div>
+
+    {% endfor %}
+<div class="w3-padding-64 ">
+       <div style="float:left">
+                {% if first_book_url is not none %}
+                    <button class="btn-general " onclick="location.href='{{first_book_url}}'">First</button>
+                {% endif %}
+                {% if prev_book_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{prev_book_url}}'">Previous</button>
+                {% endif %}
+            </div>
+            <div style="float:right">
+                {% if next_book_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{next_book_url}}'">Next</button>
+                {% endif %}
+                {% if last_book_url is not none %}
+                    <button class="btn-general" onclick="location.href='{{last_book_url}}'">Last</button>
+                {% endif %}
+            </div>
+</div>
+
+
+</main>
+
+{% endblock %}

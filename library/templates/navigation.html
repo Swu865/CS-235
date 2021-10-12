@@ -1,0 +1,46 @@
+<!-- Navbar -->
+
+
+
+
+<style>
+.content1 {
+  max-width: 1200px;
+  margin: auto;
+}
+</style>
+<div class="w3-top  ">
+ <div class="w3-bar w3-theme-d2 w3-left-align " >
+    <div class="content1">
+  <a href="{{url_for(('book_bp.home'))}}" class="w3-bar-item w3-button custom-background-color" ><i class="fa fa-home w3-margin-right" ></i>Home</a>
+
+
+
+  <div class="w3-dropdown-hover w3-hide-small">
+    <button class="w3-button" title="Notifications">Books <i class="fa fa-caret-down"></i></button>
+        <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a href="{{ url_for('book_bp.list_all_book') }}" class="w3-bar-item w3-button">List all books</a>
+
+    </div>
+  </div>
+
+        {% if 'user_name' not in session %}
+        <a href="{{ url_for('authentication_bp.register') }}">
+  	<button  class=" w3-hover-white w3-bar-item w3-button w3-hide-small w3-right " id="Reg">Register</button></a>
+
+  <a  href="{{ url_for('authentication_bp.login') }}" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-white " >Login</a>
+        {% endif %}
+
+{% if 'user_name' in session %}
+<div class="w3-dropdown-hover w3-hide-small w3-right">
+    <button class="w3-button" title="Notifications">Hello, {{ session['user_name'] }}</i></button>
+        <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+      <a href="{{ url_for('authentication_bp.logout') }}" class="w3-bar-item w3-button">LogOut</a>
+
+    </div>
+  </div>
+
+{% endif %}
+</div>
+ </div>
+     </div>
